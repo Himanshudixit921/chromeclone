@@ -30,7 +30,6 @@ const Slider = () => {
         start: "top center",
         end: "top 20%",
         scrub: 0.5,
-        // markers: true,
       },
     });
 
@@ -80,7 +79,6 @@ const Slider = () => {
         start: "top 20%",
         end: "bottom top",
         scrub: 1,
-        // markers: true,
       },
     });
 
