@@ -1,0 +1,39 @@
+.container {
+  margin-top: 35px;
+}
+.textContainer {
+  height: 264px;
+  display: grid;
+  width: 100%;
+  place-content: center;
+}
+.text {
+  font-size: 30px;
+}
+.textContainer {
+  text-align: center;
+}
+
+.firstLine {
+  font-size: 3.75rem;
+  line-height: 4.5rem;
+  letter-spacing: -0.078125rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.secondLine {
+  font-size: 3.75rem;
+  line-height: 0.5rem;
+  letter-spacing: -0.078125rem;
+  margin-top: 0.5rem;
+}
+
+.fast {
+  background-color: rgb(161, 221, 161);
+  color: rgb(2, 102, 16);
+  padding: 8px 50px; 
+  margin: 0 0.9rem; 
+  border-radius: 50px; 
+}

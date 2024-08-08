@@ -1,0 +1,58 @@
+.container {
+  height: 426px;
+  padding-bottom: 16px;
+  overflow-y: visible;
+  overflow-x: clip;
+}
+.container::-webkit-scrollbar {
+  display: none;
+}
+.container {
+  scrollbar-width: none;
+}
+.container {
+  -ms-overflow-style: none;
+}
+.animationContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+
+.animationContainer img {
+  max-height: 100%;
+  width: auto;
+  flex: 1 0 auto;
+}
+.firstImage {
+  border-radius: 4px;
+  transform: translate(23%, -22%);
+}
+
+.secondImage {
+  border-radius: 20px;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: translateY(50%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.thirdImage {
+  border-radius: 4px;
+
+  scale: 1.15;
+  transform: translate(0, 8%);
+}
+.fourthImage {
+  border-radius: 20px;
+  border: 1px solid transparent;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translate(52%, -26%) scale(1.25);
+}
+.fifthImage {
+  border-radius: 4px;
+
+  transform: translate(24%, 10%);
+}

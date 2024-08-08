@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+// App.js
+import React, { useRef } from "react";
+import Chromedownload from "./component/chdownload/Chromedownload";
+import Header from "./component/header/header";
+import Slider from "./component/slider/slider";
+import Fast from "./component/Fast/fast";
+import PerformanceContainer from "./component/performanceContainer/performanceContainer";
 
 function App() {
+  const fastRef = useRef(null);
+
+  const scrollToFast = () => {
+    if (fastRef.current) {
+      fastRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Chromedownload onFastTabClick={scrollToFast} />
+      <Slider />
+      <div ref={fastRef}>
+        <Fast />
+        <PerformanceContainer></PerformanceContainer>
+      </div>
+      <div style={{ height: "100vh" }}></div>
     </div>
   );
 }
