@@ -14,10 +14,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prebuild": "npm install --force",
-  "build": "next build"
+  "prebuild": "npm install --force",
+
   },
   "eslintConfig": {
     "extends": [
