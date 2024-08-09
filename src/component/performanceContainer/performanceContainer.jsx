@@ -1,69 +1,56 @@
-import React, { useRef, useLayoutEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import React, { useLayoutEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./performanceContainer.module.css";
 import videoSrc from "../../images/non-chrome.webm";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PerformanceContainer = () => {
-  const pinSlider = useRef(null);
+  const sliderRef = useRef(null);
+  const dataRef = useRef(null);
+  const videoRef = useRef(null);
 
   useLayoutEffect(() => {
-    let ctx = gsap.context(() => {
-      const firstContainer = document.querySelector(
-        `.${styles.firstContainer}`
-      );
-      const secondContainer = document.querySelector(
-        `.${styles.container}:nth-of-type(2)`
-      );
-      const thirdContainer = document.querySelector(
-        `.${styles.container}:nth-of-type(3)`
-      );
+    ScrollTrigger.create({
+      trigger: "#fastRefContainer",
+      start: "top top",
+      end: "bottom center",
+      pin: true,
+      pinSpacing: false,
+      scrub: true,
+    });
 
-      // Ensure all elements are visible
-      gsap.set([firstContainer, secondContainer, thirdContainer], {
-        autoAlpha: 1,
-      });
+    const scrollTriggerConfig = {
+      trigger: sliderRef.current,
+      start: "top top",
+      end: "bottom center",
+      scrub: true,
+    };
 
-      // GSAP timeline setup
-      let tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: pinSlider.current,
-          scrub: 1,
-          pin: true,
-          start: "top top",
-          end: "+=500 top",
-          anticipatePin: 1,
-        },
-      });
+    gsap.to(sliderRef.current, {
+      minHeight: "480px",
+      scrollTrigger: scrollTriggerConfig,
+    });
 
-      tl.fromTo(
-        firstContainer,
-        { scale: 1.2 },
-        { scale: 1, duration: 0.8, ease: "power2.out" }
-      )
-        .fromTo(
-          secondContainer,
-          { x: 200 },
-          { x: 0, duration: 0.8, ease: "power2.out" },
-          0
-        )
-        .fromTo(
-          thirdContainer,
-          { x: 200 },
-          { x: 0, duration: 0.8, ease: "power2.out" },
-          0
-        );
-    }, pinSlider);
+    gsap.to(dataRef.current, {
+      height: "482px",
+      width: "953px",
+      scrollTrigger: scrollTriggerConfig,
+    });
 
-    return () => ctx.revert();
+    gsap.to(videoRef.current, {
+      height: "549px",
+      x: -500,
+      y: 200,
+      scrollTrigger: scrollTriggerConfig,
+    });
   }, []);
 
   return (
-    <div ref={pinSlider} className={styles.outerWrapper}>
-      <div className={styles.containerWrapper}>
-        <div className={`${styles.container} ${styles.firstContainer}`}>
+    <div id="fastRefContainer">
+      <div className={styles.sliderContainer} ref={sliderRef}>
+        <div className={styles.dataContainer} ref={dataRef}>
           <div className={styles.textSection}>
             <h1 className={styles.heading}>
               Prioritise <br /> performance
@@ -78,7 +65,7 @@ const PerformanceContainer = () => {
               </a>
             </div>
           </div>
-          <div className={styles.imageSection}>
+          <div className={styles.videoContainer} ref={videoRef}>
             <video
               className={styles.video}
               src={videoSrc}
@@ -88,8 +75,6 @@ const PerformanceContainer = () => {
             />
           </div>
         </div>
-        <div className={styles.container}></div>
-        <div className={styles.container}></div>
       </div>
     </div>
   );

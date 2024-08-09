@@ -20,7 +20,7 @@ function App() {
       <Header />
       <Chromedownload onFastTabClick={scrollToFast} />
       <Slider />
-      <div ref={fastRef}>
+      <div ref={fastRef} id="fastRefContainer">
         <Fast />
         <PerformanceContainer></PerformanceContainer>
       </div>
