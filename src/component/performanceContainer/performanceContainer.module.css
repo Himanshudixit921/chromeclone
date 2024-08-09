@@ -1,9 +1,11 @@
 .sliderContainer {
-  display: flex;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 50px;
   min-height: 922px;
-  width: auto;
-  padding-left: 110px;
   justify-content: center;
+  padding-left: 2000px;
+  padding-right: 2000px;
 }
 
 .dataContainer {
@@ -58,4 +60,39 @@
   font-size: 16px;
   color: #1a73e8;
   text-decoration: none;
+}
+.secondContainer {
+  height: 482px;
+  width: 953px;
+  background-color: blue;
+}
+.thirdContainer {
+  height: 482px;
+  width: 953px;
+  background-color: red;
+}
+.buttonContainer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
+  z-index: 10;
+  display: flex;
+  gap: 10px;
+  animation-delay: 1s;
+  transition: opacity 0.5s ease;
+}
+
+.buttonContainer button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.buttonContainer button:hover {
+  background-color: #0056b3;
 }
